@@ -5,7 +5,7 @@
 		<property name="Name" type="string" />
 		<property name="FilePath" type="string" />
 		<property name="Length" type="int" />
-		<property name="AccountId" type="int" />
+		<property name="AccountId" type="int" />		
 	</propertyGroup>
 	<script>
 		CREATE TABLE Document (

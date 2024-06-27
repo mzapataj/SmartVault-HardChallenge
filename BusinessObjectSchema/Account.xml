@@ -2,7 +2,7 @@
 <businessObject>
 	<propertyGroup>
 		<property name="Id" type="int" />
-		<property name="Name" type="string" />
+		<property name="Name" type="string" />		
 	</propertyGroup>
 	<script>
 		CREATE TABLE Account (

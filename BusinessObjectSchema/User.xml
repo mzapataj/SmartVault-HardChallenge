@@ -7,7 +7,7 @@
 		<property name="DateOfBirth" type="System.DateTime" />
 		<property name="AccountId" type="int" />
 		<property name="Username" type="string" />
-		<property name="Password" type="string" />
+		<property name="Password" type="string" />		
 	</propertyGroup>
 	<script>
 		CREATE TABLE User (

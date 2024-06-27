@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "SmartVault.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/SmartVault.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SmartVault.Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SmartVault.Core/1.0.0": {
+      "type": "project",
+      "path": "../SmartVault.Core/SmartVault.Core.csproj",
+      "msbuildProject": "../SmartVault.Core/SmartVault.Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "SmartVault.Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\jo-ge\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\jo-ge\\RiderProjects\\HardChallenge\\SmartVault.Core\\SmartVault.Core.csproj": {
+              "projectPath": "C:\\Users\\jo-ge\\RiderProjects\\HardChallenge\\SmartVault.Core\\SmartVault.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

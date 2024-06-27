@@ -1,20 +1,24 @@
-﻿namespace SmartVault.Program
+﻿using SmartVault.Core.BusinessObjects;
+
+namespace SmartVault.Program
 {
     partial class Program
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0)
+            var xd = new Account()
             {
-                return;
+                Name = "popo"
             }
-
+            ;
             WriteEveryThirdFileToFile(args[0]);
             GetAllFileSizes();
         }
 
         private static void GetAllFileSizes()
         {
+            var lol = new Account();
+            
             // TODO: Implement functionality
         }
 

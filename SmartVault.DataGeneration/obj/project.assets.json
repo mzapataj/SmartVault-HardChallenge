@@ -878,6 +878,16 @@
         "runtime": {
           "bin/placeholder/SmartVault.CodeGeneration.dll": {}
         }
+      },
+      "SmartVault.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/SmartVault.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SmartVault.Core.dll": {}
+        }
       }
     }
   },
@@ -2539,13 +2549,19 @@
       "type": "project",
       "path": "../SmartVault.CodeGeneration/SmartVault.CodeGeneration.csproj",
       "msbuildProject": "../SmartVault.CodeGeneration/SmartVault.CodeGeneration.csproj"
+    },
+    "SmartVault.Core/1.0.0": {
+      "type": "project",
+      "path": "../SmartVault.Core/SmartVault.Core.csproj",
+      "msbuildProject": "../SmartVault.Core/SmartVault.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Dapper.Extensions.SQLite >= 4.2.1",
       "Microsoft.Extensions.Configuration.Json >= 7.0.0",
-      "SmartVault.CodeGeneration >= 1.0.0"
+      "SmartVault.CodeGeneration >= 1.0.0",
+      "SmartVault.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2582,6 +2598,9 @@
           "projectReferences": {
             "C:\\Users\\jo-ge\\RiderProjects\\HardChallenge\\SmartVault.CodeGeneration\\SmartVault.CodeGeneration.csproj": {
               "projectPath": "C:\\Users\\jo-ge\\RiderProjects\\HardChallenge\\SmartVault.CodeGeneration\\SmartVault.CodeGeneration.csproj"
+            },
+            "C:\\Users\\jo-ge\\RiderProjects\\HardChallenge\\SmartVault.Core\\SmartVault.Core.csproj": {
+              "projectPath": "C:\\Users\\jo-ge\\RiderProjects\\HardChallenge\\SmartVault.Core\\SmartVault.Core.csproj"
             }
           }
         }
