@@ -8,16 +8,5 @@
 		<property name="AccountId" type="int" />
 		<property name="Username" type="string" />
 		<property name="Password" type="string" />		
-	</propertyGroup>
-	<script>
-		CREATE TABLE User (
-			Id INTEGER PRIMARY KEY,
-			FirstName TEXT,
-			LastName TEXT,
-			DateOfBirth TEXT,
-			AccountId INTEGER,
-			Username TEXT,
-			Password TEXT
-		);
-	</script>
+	</propertyGroup>	
 </businessObject>

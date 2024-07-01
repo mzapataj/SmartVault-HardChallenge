@@ -6,14 +6,5 @@
 		<property name="FilePath" type="string" />
 		<property name="Length" type="int" />
 		<property name="AccountId" type="int" />		
-	</propertyGroup>
-	<script>
-		CREATE TABLE Document (
-			Id INTEGER PRIMARY KEY,
-			Name TEXT,
-			FilePath TEXT,
-			Length INTEGER,
-			AccountId INTEGER
-		);
-	</script>
+	</propertyGroup>	
 </businessObject>
