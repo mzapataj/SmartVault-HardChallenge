@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
+using System.Text;
+using Dapper;
 using SmartVault.Shared.Interfaces;
 
 namespace SmartVault.Shared.Data
@@ -101,7 +104,22 @@ namespace SmartVault.Shared.Data
             foreach (var dbProperty in dbProperties.Where(x => x.TableName == typeof(T).Name))
             {
                 var dbParameter = dbProperty.DbParameter;
-                dbParameter.Value = typeof(T).GetProperty(dbProperty.PropertyName).GetValue(entity);
+                var property = typeof(T).GetProperty(dbProperty.PropertyName);
+                var value = property?.GetValue(entity);
+                if (property?.PropertyType == typeof(byte[]))
+                {
+                    dbParameter.Value = value is not null ? Encoding.Default.GetString((byte[]) value) : null;
+                }
+                else if (property?.PropertyType == typeof(bool))
+                {
+                    dbParameter.Value = ((bool) value)? "1" : "0" ;
+                }
+                else
+                {
+                    dbParameter.Value = value;
+                }
+
+                dbParameter.Value ??= DBNull.Value;
             }
             command.ExecuteNonQuery();
         }

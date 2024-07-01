@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http.Headers;
 
 namespace SmartVault.Shared.Data
 {
@@ -10,6 +11,10 @@ namespace SmartVault.Shared.Data
 
             switch (type)
             {
+                case Type when type == typeof(bool):
+                    return "BIT";
+                case Type when type == typeof(byte):
+                    return "TINYINT";
                 case Type when type == typeof(int):
                 case Type when type == typeof(long):
                 case Type when type == typeof(short):
@@ -21,6 +26,8 @@ namespace SmartVault.Shared.Data
                 case Type when type == typeof(double):
                 case Type when type == typeof(decimal):
                     return "DECIMAL";
+                case Type when type == typeof(byte[]):
+                    return "TEXT";
                 default:
                     throw new NotImplementedException($"The type '{type.Name}' is not implemented in SQL");
             }

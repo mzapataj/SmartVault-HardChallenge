@@ -11,6 +11,7 @@ namespace SmartVault.Core.Settings
         string DatabaseFileName { get; set; }
 
         ConnectionStrings ConnectionStrings { get; set; }
+        string Secret { get; set; }
     }
 
     public class Settings : ISettings
@@ -22,6 +23,7 @@ namespace SmartVault.Core.Settings
         public string AppName { get; set; }
         public string DatabaseFileName { get; set; }
         public ConnectionStrings ConnectionStrings { get; set; }
+        public string Secret { get; set; }
     }
 
     public class ConnectionStrings
