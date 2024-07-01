@@ -1,4 +1,4 @@
-﻿namespace SmartVault.DataGeneration.Dto
+﻿namespace SmartVault.Infrastructure.Dto
 {
     public class DataGenerationResult
     {

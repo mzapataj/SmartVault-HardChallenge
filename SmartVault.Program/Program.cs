@@ -40,14 +40,14 @@ namespace SmartVault.Program
 
         private static void GetAllFileSizes()
         {
-            Console.WriteLine("WriteEveryThirdFileToFile method started");
+            Console.WriteLine("GetAllFileSizes method is running...");
             var count = documentService.GetAllFileSizes();
             Console.WriteLine($"{count} files were updated");
         }
 
         private static void WriteEveryThirdFileToFile(string accountId)
         {
-            Console.WriteLine("WriteEveryThirdFileToFile method started");
+            Console.WriteLine("WriteEveryThirdFileToFile method is running...");
             var count = documentService.WriteEveryThirdFileToFile(accountId);
             Console.WriteLine($"{count} files contains '{documentService.TextToMatch}' text");
         }

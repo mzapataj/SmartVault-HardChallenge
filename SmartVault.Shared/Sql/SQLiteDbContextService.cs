@@ -1,5 +1,4 @@
-﻿using System;
-using Dapper;
+﻿using Dapper;
 using SmartVault.Shared.Interfaces;
 using System.Collections.Generic;
 using System.Data;
@@ -9,8 +8,6 @@ namespace SmartVault.Shared.Sql
 {
     public class SQLiteDbContextService : IDbContextService
     {
-        private readonly object tLock = new();
-
         private IDbConnection connection;
         private IDbCommandService commandService;
      
@@ -56,25 +53,21 @@ namespace SmartVault.Shared.Sql
 
         public IDbTransaction BeginTransaction()
         {
-            return connection.BeginTransaction();
+            var transaction = connection.BeginTransaction();
+            commandService.Init(connection.CreateCommand());
+            return transaction;
         }
 
         public void Open()
         {
-            lock (tLock) {
-                connection.Open();
-                commandService.Init(connection.CreateCommand());
-            }
+            connection.Open();
         }
 
         public void Close()
         {
-            lock (tLock)
-            {
-                commandService?.Dispose();
-                connection.Close();
-                connection.Dispose();
-            }
+            commandService?.Dispose();
+            connection.Close();
+            connection.Dispose();
         }
     }
 }

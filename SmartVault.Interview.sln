@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{74D8BE33
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartVault.Shared.Test", "SmartVault.Shared.Test\SmartVault.Shared.Test.csproj", "{EDA5C20E-398C-4F29-A835-42C0AE841876}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartVault.DataGeneration.Test", "SmartVault.DataGeneration.Test\SmartVault.DataGeneration.Test.csproj", "{01524520-DCBD-4BC7-8511-48170C1B5B45}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVault.Infrastructure.Test", "SmartVault.Infrastructure.Test\SmartVault.Infrastructure.Test.csproj", "{66B54674-B09E-4D3A-94D5-555D06E2C445}"
 EndProject
 Global
@@ -57,10 +55,6 @@ Global
 		{EDA5C20E-398C-4F29-A835-42C0AE841876}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDA5C20E-398C-4F29-A835-42C0AE841876}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDA5C20E-398C-4F29-A835-42C0AE841876}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01524520-DCBD-4BC7-8511-48170C1B5B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01524520-DCBD-4BC7-8511-48170C1B5B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01524520-DCBD-4BC7-8511-48170C1B5B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01524520-DCBD-4BC7-8511-48170C1B5B45}.Release|Any CPU.Build.0 = Release|Any CPU
 		{66B54674-B09E-4D3A-94D5-555D06E2C445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66B54674-B09E-4D3A-94D5-555D06E2C445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66B54674-B09E-4D3A-94D5-555D06E2C445}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -71,7 +65,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EDA5C20E-398C-4F29-A835-42C0AE841876} = {74D8BE33-733D-46C7-A4FF-5E1E2C662217}
-		{01524520-DCBD-4BC7-8511-48170C1B5B45} = {74D8BE33-733D-46C7-A4FF-5E1E2C662217}
 		{66B54674-B09E-4D3A-94D5-555D06E2C445} = {74D8BE33-733D-46C7-A4FF-5E1E2C662217}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

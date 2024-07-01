@@ -4,6 +4,7 @@ using SmartVault.Core.BusinessObjects;
 using SmartVault.Infrastructure.Services;
 using SmartVault.Shared.Interfaces;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using Xunit;
 
@@ -19,6 +20,8 @@ namespace SmartVault.Infrastructure.Test.Services
         public DocumentSeviceTests()
         {
             mockDbContextService = new Mock<IDbContextService>();
+            mockDbContextService.Setup(x => x.BeginTransaction())
+                .Returns(new Mock<IDbTransaction>().Object);
             documentService = new DocumentService(mockDbContextService.Object);
         }
 
@@ -94,8 +97,8 @@ namespace SmartVault.Infrastructure.Test.Services
                 });
             }
             mockDbContextService.Setup( x => 
-                x.GetAll<Document>(It.Is<string>( y => y == "[AccountId] = @accountId"),
-            accountId, null)).Returns(documents);
+                x.GetAll<Document>(It.Is<string>( y => y == "[AccountId] = @accountId"), 
+                    It.IsAny<object>(), null)).Returns(documents);
 
             documentService.WriteEveryThirdFileToFile(accountId);
 
@@ -110,6 +113,12 @@ namespace SmartVault.Infrastructure.Test.Services
             string accountId = "1";
             string directory = "Documents";
             var documents = new List<Document>();
+
+            var xd =new
+            {
+                monda = 1
+            };
+            
             for (int i = 1; i <= 7; i++)
             {
                 documents.Add(new ()
@@ -121,13 +130,14 @@ namespace SmartVault.Infrastructure.Test.Services
                 });
             }
             mockDbContextService.Setup( x => 
-                x.GetAll<Document>(It.Is<string>( y => y == "[AccountId] = @accountId"),
-            accountId, null)).Returns(documents);
+                x.GetAll<Document>(It.Is<string>( 
+                        y => y == "[AccountId] = @accountId"),
+               It.IsAny<object>(), null)).Returns(documents);
 
             documentService.WriteEveryThirdFileToFile(accountId);
 
-            
-            Assert.Equal(expectedFileContent, File.ReadAllText(outputPath));
+            var outputContent =File.ReadAllText(outputPath);
+            Assert.Equal(expectedFileContent, outputContent);
         }
 
         public void Dispose()

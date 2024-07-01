@@ -18,8 +18,7 @@ namespace SmartVault.Infrastructure.Services
     {
         private readonly IDbContextService dbContextService;
         public string TextToMatch => "Smith Property";
-
-
+        
         public DocumentService(IDbContextService dbContextService)
         {
             this.dbContextService = dbContextService;            
@@ -30,20 +29,24 @@ namespace SmartVault.Infrastructure.Services
         {
             long updatedFilesCount = 0;
             var documents = dbContextService.GetAll<Document>();
-
-            foreach (var document in documents)
+            
+            using (var transaction = dbContextService.BeginTransaction())
             {
-                var filePath = document.FilePath;
-                var fileSize = (int)new FileInfo(filePath).Length;
-
-                if (document.Length != fileSize)
+                foreach (var document in documents)
                 {
-                    document.Length = fileSize;
-                    dbContextService.UpdateById(document);
-                    ++updatedFilesCount;
-                }
-            }
+                    var filePath = document.FilePath;
+                    var fileSize = (int)new FileInfo(filePath).Length;
 
+                    if (document.Length != fileSize)
+                    {
+                        document.Length = fileSize;
+                        dbContextService.UpdateById(document);
+                        ++updatedFilesCount;
+                    }
+                }
+                transaction.Commit();
+            }
+            
             return updatedFilesCount;
         }
 
@@ -56,7 +59,10 @@ namespace SmartVault.Infrastructure.Services
             Console.WriteLine("Reading Documents from Database...");
 
             outputFile ??= new StreamWriter(Path.Combine(outputPath, outputFileName));
-            var documents = dbContextService.GetAll<Document>("[AccountId] = @accountId", accountId).ToList();
+            var documents = dbContextService.GetAll<Document>(
+                "[AccountId] = @accountId", new {
+                accountId
+            }).ToList();
 
             for (int i = 2; i < documents.Count(); i += 3)
             {
@@ -68,7 +74,6 @@ namespace SmartVault.Infrastructure.Services
                     outputFile.WriteLine(fileContent);
                     ++writedFilesCount;
                 }
-                    
             }
             outputFile.Dispose();
             return writedFilesCount;

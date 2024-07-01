@@ -77,7 +77,7 @@ namespace SmartVault.Shared.Test.Sql
         public void UpdateById()
         {
             var expectedStr = @"UPDATE [Bar] 
- SET [Name] = @NameBar) 
+ SET [Name] = @NameBar
  WHERE [Id] = @IdBar";
             dbParameterMock = new Mock<IDbDataParameter>();
             commandMock.Setup(x => x.CreateParameter()).Returns(dbParameterMock.Object);

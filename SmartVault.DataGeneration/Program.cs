@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using SmartVault.Core.Settings;
-using SmartVault.DataGeneration.Interfaces;
-using SmartVault.DataGeneration.Services;
 using SmartVault.Shared.Interfaces;
 using SmartVault.Shared.Sql;
 using System;
 using System.Data;
 using System.IO;
 using Microsoft.Data.Sqlite;
+using SmartVault.Infrastructure.Services;
 using SmartVault.Shared.Data;
 
 namespace SmartVault.DataGeneration
@@ -27,6 +26,8 @@ namespace SmartVault.DataGeneration
             
             IDbContextService dbContextService = new SQLiteDbContextService(connection, command);
             IDataGenerationService dataGenerationService = new DataGenerationService(dbContextService, settings);
+            
+            Console.WriteLine("Data generation is running...");
             
             var result = dataGenerationService.SeedDatabase();
             

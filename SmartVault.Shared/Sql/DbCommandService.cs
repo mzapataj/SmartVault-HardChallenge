@@ -129,7 +129,7 @@ namespace SmartVault.Shared.Data
                 .Select(x => $"[{x}] = @{x}{typeof(T).Name}"));
 
             var updateStr = @$"UPDATE [{typeof(T).Name}] 
- SET {setStr}) 
+ SET {setStr}
  WHERE {whereStr}";
 
             dbProperties.AddRange(properties.Select(property =>

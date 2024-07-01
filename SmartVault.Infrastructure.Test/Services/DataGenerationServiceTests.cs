@@ -2,11 +2,11 @@
 using Moq;
 using SmartVault.Core.BusinessObjects;
 using SmartVault.Core.Settings;
-using SmartVault.DataGeneration.Services;
+using SmartVault.Infrastructure.Services;
 using SmartVault.Shared.Interfaces;
 using Xunit;
 
-namespace SmartVault.DataGeneration.Test.Services
+namespace SmartVault.Infrastructure.Test.Services
 {
     public class DataGenerationServiceTests
     {
@@ -20,6 +20,8 @@ namespace SmartVault.DataGeneration.Test.Services
             mockSettings = new Mock<ISettings>();
             mockDbContextService.SetupAllProperties();
             mockSettings.SetupAllProperties();
+            mockSettings.Setup(x => x.AppName).Returns("SmartVault");
+            mockSettings.Setup(x => x.DatabaseFileName).Returns("testdb.sqlite");
             dataGenerationService = new DataGenerationService(mockDbContextService.Object, mockSettings.Object);
         }
 

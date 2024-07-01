@@ -14,12 +14,14 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper.Extensions.SQLite" Version="4.2.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SmartVault.CodeGeneration\SmartVault.CodeGeneration.csproj" />
     <ProjectReference Include="..\SmartVault.Core\SmartVault.Core.csproj" />
+    <ProjectReference Include="..\SmartVault.Infrastructure\SmartVault.Infrastructure.csproj" />
     <ProjectReference Include="..\SmartVault.Shared\SmartVault.Shared.csproj" />
   </ItemGroup>
 
